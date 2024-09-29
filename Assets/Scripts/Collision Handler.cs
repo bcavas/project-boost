@@ -3,7 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    int currentSceneIndex;
+    void Start() // get scene index upon initialization of parent object (the rocket ship)
+    {
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    void OnCollisionEnter(Collision other)
     {
         switch (other.gameObject.tag)
         {
@@ -13,10 +19,14 @@ public class CollisionHandler : MonoBehaviour
             case "Finish":
                 Debug.Log("Ship has reached destination. Stage complete.");
                 break;
-            default:
-                Debug.Log("Ship has crashed!");
-                SceneManager.LoadScene(0);
+            default: // reset level on ship crash
+                ReloadLevel();
                 break;
         }
+    }
+
+    void ReloadLevel()
+    {
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }
