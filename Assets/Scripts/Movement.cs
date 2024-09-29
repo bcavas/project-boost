@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    // cache a reference to the Rigidbody class
+    // cache references to reused objects
     Rigidbody rb;
+    AudioSource audioSource;
     [SerializeField] float forwardThrust = 800.0f;
     [SerializeField] float rotationalThrust = 20.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //instantiate a Rigidbody object at game start
+        //instantiate reusable objects at game start
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+
+        // log error messages for missing components
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody component is missing from this GameObject");
+        }
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is missing from this GameObject.");
+        }
     }
 
     // Update is called once per frame
@@ -28,9 +40,17 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rb.AddRelativeForce(Vector3.up * Time.deltaTime * forwardThrust);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
         }
     }
-    
+
     void ProcessRotation()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
