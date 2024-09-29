@@ -417,10 +417,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launch Pad
       objectReference: {fileID: 0}
-    - target: {fileID: 5158959974769866060, guid: c20a722cd8c1e497fb87d6d0dc62aba2, type: 3}
-      propertyPath: m_TagString
-      value: Start
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -474,17 +470,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1652412935246685744, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 20bcc21f459c14624a163493a8bd6701, type: 2}
     - target: {fileID: 3180460599580304894, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
       propertyPath: m_Name
       value: Landing Pad
-      objectReference: {fileID: 0}
-    - target: {fileID: 3180460599580304894, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
-      propertyPath: m_TagString
-      value: Finish
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -504,12 +492,16 @@ PrefabInstance:
       value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 2923496052531085067, guid: cdc0b5506bcc34b3fa51a5d6200722d6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 19.092413
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923496052531085067, guid: cdc0b5506bcc34b3fa51a5d6200722d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.85
       objectReference: {fileID: 0}
     - target: {fileID: 2923496052531085067, guid: cdc0b5506bcc34b3fa51a5d6200722d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.83
+      value: 9.6497
       objectReference: {fileID: 0}
     - target: {fileID: 2923496052531085067, guid: cdc0b5506bcc34b3fa51a5d6200722d6, type: 3}
       propertyPath: m_LocalPosition.z
