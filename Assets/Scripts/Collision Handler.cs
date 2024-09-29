@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CollisionHandler : MonoBehaviour
                 break;
             default:
                 Debug.Log("Ship has crashed!");
+                SceneManager.LoadScene(0);
                 break;
         }
     }
