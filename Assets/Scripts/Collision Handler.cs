@@ -19,10 +19,10 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("This is the starting point. Get going!");
                 break;
             case "Finish":
-                LoadNextLevel();
+                Invoke("LoadNextLevel", 1.0f);
                 break;
             default: // reset level on ship crash
-                ReloadLevel();
+                Invoke("ReloadLevel", 1.0f);
                 break;
         }
     }
