@@ -3,12 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    // declare cache references
     int currentSceneIndex;
     int totalSceneCount;
+    [SerializeField] float delay = 1.0f;
+    Movement movementComponent;
     void Start() // get scene index upon initialization of parent object (the rocket ship)
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         totalSceneCount = SceneManager.sceneCountInBuildSettings;
+        movementComponent = GetComponent<Movement>();
     }
 
     void OnCollisionEnter(Collision other)
@@ -19,31 +23,45 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("This is the starting point. Get going!");
                 break;
             case "Finish":
-                Invoke("LoadNextLevel", 1.0f);
+                StartSuccessSequence(delay);
                 break;
             default: // reset level on ship crash
-                Invoke("ReloadLevel", 1.0f);
+                StartCrashSequence(delay);
                 break;
         }
     }
 
-    void ReloadLevel()
+    void ReloadLevel() // will be invoked in StartCrashSequence()
     {
-        Debug.Log("Ship crashed, respawning at launch pad.");
         SceneManager.LoadScene(currentSceneIndex);
     }
 
-    void LoadNextLevel()
+    void LoadNextLevel() // will be invoked in StartSuccessSequence()
     {
         if (currentSceneIndex + 1 < totalSceneCount)
         {
-            Debug.Log("Destination reached, moving to next level.");
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
         else
         {
-            Debug.Log("Congratulations on finishing the game!");
             SceneManager.LoadScene(0);
         }
+    }
+
+    void StartCrashSequence(float delay)
+    {
+        Debug.Log("Ship crashed, respawning at launch pad.");
+        // disable movement of parent object
+        movementComponent.enabled = false;
+        // after a delay, reload the level
+        Invoke("ReloadLevel", delay);
+    }
+    void StartSuccessSequence(float delay)
+    {
+        Debug.Log("Congratulations, stage completed.");
+        // disable movement of parent object
+        movementComponent.enabled = false;
+        // after a delay, reload the level
+        Invoke("LoadNextLevel", delay);
     }
 }
