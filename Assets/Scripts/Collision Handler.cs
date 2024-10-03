@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,12 +7,17 @@ public class CollisionHandler : MonoBehaviour
     // declare cache references
     int currentSceneIndex;
     int totalSceneCount;
+    Movement movementComponent;
     AudioSource audioSource;
+
     // declare serializable parameters 
     [SerializeField] float delay = 1.0f;
     [SerializeField] AudioClip crashAudio;
     [SerializeField] AudioClip successAudio;
-    Movement movementComponent;
+
+    // declare component state variables
+    bool isTransitioning = false;
+
     void Start() // get scene index upon initialization of parent object (the rocket ship)
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -31,6 +37,9 @@ public class CollisionHandler : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        // don't do anything in the middle of a transition
+        if (isTransitioning) return;
+
         switch (other.gameObject.tag)
         {
             case "Start":
@@ -64,6 +73,7 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence(float delay)
     {
+        isTransitioning = true;
         Debug.Log("Ship crashed, respawning at launch pad.");
         audioSource.PlayOneShot(crashAudio);
         // disable movement of parent object
@@ -73,6 +83,7 @@ public class CollisionHandler : MonoBehaviour
     }
     void StartSuccessSequence(float delay)
     {
+        isTransitioning = true;
         Debug.Log("Congratulations, stage completed.");
         audioSource.PlayOneShot(successAudio);
         // disable movement of parent object
