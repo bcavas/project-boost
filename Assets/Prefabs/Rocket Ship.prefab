@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardThrust: 600
   rotationalThrust: 20
+  thrusterAudio: {fileID: 8300000, guid: c7fad7eea8ada420da58f555136bfea0, type: 3}
 --- !u!54 &1352563572718083531
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -399,7 +400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a59fc203b55343b49fd190fcd4eb46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
+  delay: 5
+  crashAudio: {fileID: 8300000, guid: 70f87d3ded9964d96a7a46fef797ef21, type: 3}
+  successAudio: {fileID: 8300000, guid: 13f126647537643269c2f38999c9f772, type: 3}
 --- !u!1 &6476595560599686128
 GameObject:
   m_ObjectHideFlags: 0
