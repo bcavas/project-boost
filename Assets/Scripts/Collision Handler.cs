@@ -74,6 +74,8 @@ public class CollisionHandler : MonoBehaviour
     void StartCrashSequence(float delay)
     {
         isTransitioning = true;
+        // disable all other audio playing
+        audioSource.Stop();
         Debug.Log("Ship crashed, respawning at launch pad.");
         audioSource.PlayOneShot(crashAudio);
         // disable movement of parent object
@@ -84,6 +86,7 @@ public class CollisionHandler : MonoBehaviour
     void StartSuccessSequence(float delay)
     {
         isTransitioning = true;
+        audioSource.Stop();
         Debug.Log("Congratulations, stage completed.");
         audioSource.PlayOneShot(successAudio);
         // disable movement of parent object
