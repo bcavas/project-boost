@@ -7,8 +7,11 @@ public class Movement : MonoBehaviour
     // cache references to reused objects
     Rigidbody rb;
     AudioSource audioSource;
+
+    // parameters for editor input
     [SerializeField] float forwardThrust = 800.0f;
     [SerializeField] float rotationalThrust = 20.0f;
+    [SerializeField] AudioClip thrusterAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +45,7 @@ public class Movement : MonoBehaviour
             rb.AddRelativeForce(Vector3.up * Time.deltaTime * forwardThrust);
             if (!audioSource.isPlaying)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(thrusterAudio);
             }
         }
         else

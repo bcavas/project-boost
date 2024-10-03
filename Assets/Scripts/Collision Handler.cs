@@ -6,13 +6,27 @@ public class CollisionHandler : MonoBehaviour
     // declare cache references
     int currentSceneIndex;
     int totalSceneCount;
+    AudioSource audioSource;
+    // declare serializable parameters 
     [SerializeField] float delay = 1.0f;
+    [SerializeField] AudioClip crashAudio;
+    [SerializeField] AudioClip successAudio;
     Movement movementComponent;
     void Start() // get scene index upon initialization of parent object (the rocket ship)
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         totalSceneCount = SceneManager.sceneCountInBuildSettings;
         movementComponent = GetComponent<Movement>();
+        audioSource = GetComponent<AudioSource>();
+
+        if (movementComponent == null)
+        {
+            Debug.LogError("Movement component is missing from this GameObject");
+        }
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is missing from this GameObject.");
+        }
     }
 
     void OnCollisionEnter(Collision other)
@@ -51,6 +65,7 @@ public class CollisionHandler : MonoBehaviour
     void StartCrashSequence(float delay)
     {
         Debug.Log("Ship crashed, respawning at launch pad.");
+        audioSource.PlayOneShot(crashAudio);
         // disable movement of parent object
         movementComponent.enabled = false;
         // after a delay, reload the level
@@ -59,6 +74,7 @@ public class CollisionHandler : MonoBehaviour
     void StartSuccessSequence(float delay)
     {
         Debug.Log("Congratulations, stage completed.");
+        audioSource.PlayOneShot(successAudio);
         // disable movement of parent object
         movementComponent.enabled = false;
         // after a delay, reload the level
