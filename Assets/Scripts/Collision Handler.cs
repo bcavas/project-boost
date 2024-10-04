@@ -14,6 +14,8 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] float delay = 1.0f;
     [SerializeField] AudioClip crashAudio;
     [SerializeField] AudioClip successAudio;
+    [SerializeField] ParticleSystem successParticle;
+    [SerializeField] ParticleSystem crashParticle;
 
     // declare component state variables
     bool isTransitioning = false;
@@ -76,7 +78,7 @@ public class CollisionHandler : MonoBehaviour
         isTransitioning = true;
         // disable all other audio playing
         audioSource.Stop();
-        Debug.Log("Ship crashed, respawning at launch pad.");
+        crashParticle.Play();
         audioSource.PlayOneShot(crashAudio);
         // disable movement of parent object
         movementComponent.enabled = false;
@@ -87,7 +89,7 @@ public class CollisionHandler : MonoBehaviour
     {
         isTransitioning = true;
         audioSource.Stop();
-        Debug.Log("Congratulations, stage completed.");
+        successParticle.Play();
         audioSource.PlayOneShot(successAudio);
         // disable movement of parent object
         movementComponent.enabled = false;
