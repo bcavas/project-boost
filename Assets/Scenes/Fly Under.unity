@@ -316,10 +316,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 274966135413330854, guid: 3256b2f728a4542d695f0aaf8f1d1b6d, type: 3}
-      propertyPath: thrusterAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: c7fad7eea8ada420da58f555136bfea0, type: 3}
     - target: {fileID: 3146581898104987195, guid: 3256b2f728a4542d695f0aaf8f1d1b6d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.89
@@ -360,18 +356,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4483367930259674993, guid: 3256b2f728a4542d695f0aaf8f1d1b6d, type: 3}
-      propertyPath: delay
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4483367930259674993, guid: 3256b2f728a4542d695f0aaf8f1d1b6d, type: 3}
-      propertyPath: crashAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 70f87d3ded9964d96a7a46fef797ef21, type: 3}
-    - target: {fileID: 4483367930259674993, guid: 3256b2f728a4542d695f0aaf8f1d1b6d, type: 3}
-      propertyPath: successAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 13f126647537643269c2f38999c9f772, type: 3}
     - target: {fileID: 6352354567183537134, guid: 3256b2f728a4542d695f0aaf8f1d1b6d, type: 3}
       propertyPath: m_Name
       value: Rocket Ship
