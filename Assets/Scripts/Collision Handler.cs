@@ -19,6 +19,7 @@ public class CollisionHandler : MonoBehaviour
 
     // declare component state variables
     bool isTransitioning = false;
+    bool collisionsDisabled = false;
 
     void Start() // get scene index upon initialization of parent object (the rocket ship)
     {
@@ -37,10 +38,17 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // for debugging purposes only
+        ToggleCollisions();
+        SkipLevel();
+    }
+
     void OnCollisionEnter(Collision other)
     {
-        // don't do anything in the middle of a transition
-        if (isTransitioning) return;
+        // don't do anything in the middle of a transition or when collisions are disabled
+        if (isTransitioning || collisionsDisabled) return;
 
         switch (other.gameObject.tag)
         {
@@ -95,5 +103,21 @@ public class CollisionHandler : MonoBehaviour
         movementComponent.enabled = false;
         // after a delay, reload the level
         Invoke("LoadNextLevel", delay);
+    }
+    void ToggleCollisions()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionsDisabled = !collisionsDisabled;
+            Debug.Log($"collisionsDisabled: {collisionsDisabled}");
+        }
+    }
+
+    void SkipLevel()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
     }
 }
