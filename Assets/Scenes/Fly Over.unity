@@ -549,8 +549,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.6698113, g: 0.58928293, b: 0.36966002, a: 1}
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082
@@ -608,13 +608,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.14526016, y: -0.06629418, z: 0.21687567, w: 0.9630522}
+  m_LocalPosition: {x: 3.24, y: 34.1, z: -28.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.971, y: -3.899, z: 24.765}
 --- !u!1001 &739363220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1456,6 +1456,30 @@ PrefabInstance:
     - target: {fileID: 3180460599580304894, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
       propertyPath: m_Name
       value: Landing Pad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776223438912797601, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
+      propertyPath: m_SpotAngle
+      value: 44.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174356174870880911, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174356174870880911, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.9599998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174356174870880911, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.90977645
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174356174870880911, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.41509852
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174356174870880911, guid: fdee27d2cec8345899a4a70c10ed74d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 49.051
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
